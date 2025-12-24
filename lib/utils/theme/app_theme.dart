@@ -15,5 +15,10 @@ class AppTheme {
       onSurface: Palette.blackColor,
     ),
     scaffoldBackgroundColor: Palette.scaffoldBackgroundColor,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+  elevation: 6,
+  highlightElevation: 12,
+),
+
   );
 }

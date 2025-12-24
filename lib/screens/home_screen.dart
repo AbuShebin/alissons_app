@@ -1,3 +1,4 @@
+import 'package:alissons_app/screens/product_list_screen.dart';
 import 'package:alissons_app/utils/theme/pallette.dart';
 import 'package:alissons_app/widgets/custom_product_section.dart';
 import 'package:alissons_app/widgets/custom_product_tile.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 height: h * 0.2,
                 child: Column(
                   spacing: h * 0.02,
-        
+
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -45,23 +46,32 @@ class HomeScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.only(right: 12),
-                            child: Column(
-                              children: [
-                                CircleAvatar(
-                                  radius: 28,
-                                  backgroundColor: Colors.grey.shade300,
-                                  child: Text('${index + 1}'), // Add content
-                                ),
-                                SizedBox(height: h * 0.01),
-                                Text(
-                                  "Unpolished\nPulses",
-                                  style: TextStyle(
-                                    fontSize: h * 0.014,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Lufga",
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => ProductListScreen(),
                                   ),
-                                ),
-                              ],
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 28,
+                                    backgroundColor: Colors.grey.shade300,
+                                    child: Text('${index + 1}'), // Add content
+                                  ),
+                                  SizedBox(height: h * 0.01),
+                                  Text(
+                                    "Unpolished\nPulses",
+                                    style: TextStyle(
+                                      fontSize: h * 0.014,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "Lufga",
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -71,21 +81,21 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-        
+
               CustomProductSection(
                 title: "Featured Products",
                 child: CustomProductTile(),
               ),
               CustomProductSection(
-                title: "Featured Products",
+                title: "Daily Best Selling",
                 child: CustomProductTile(),
               ),
               CustomProductSection(
-                title: "Featured Products",
+                title: "Recently Added",
                 child: CustomProductTile(),
               ),
               CustomProductSection(
-                title: "Featured Products",
+                title: "Popular Products",
                 child: CustomProductTile(),
               ),
             ],

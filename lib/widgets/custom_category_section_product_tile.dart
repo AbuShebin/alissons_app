@@ -1,9 +1,9 @@
 import 'package:alissons_app/utils/theme/pallette.dart';
-import 'package:alissons_app/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-class CustomProductTile extends StatelessWidget {
-  const CustomProductTile({super.key});
+class CustomCategorySectionProductTile extends StatelessWidget {
+
+  const CustomCategorySectionProductTile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class CustomProductTile extends StatelessWidget {
     var w = MediaQuery.of(context).size.width;
 
     return Container(
-      width: w * 0.55, // Fixed width for horizontal scroll
+      width: w * 0.55,
       margin: EdgeInsets.only(right: 12),
       child: Container(
         decoration: BoxDecoration(
@@ -23,30 +23,19 @@ class CustomProductTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Product Image (clipped for clean look)
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
                   "assets/images/login_screen_image.jpg",
-                  height: h * 0.12,
+                  height: h * 0.1,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: h*0.01),
 
               // Product Category
-              Text(
-                "Flours & Sugars",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey.shade600,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-                         SizedBox(height: h*0.01),
+              
+                         SizedBox(height: h*0.001),
 
 
               // Product Name
@@ -56,7 +45,6 @@ class CustomProductTile extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(height: h*0.01),
 
               Text(
                 "Rs 62",
@@ -66,17 +54,20 @@ class CustomProductTile extends StatelessWidget {
                   color: Colors.green.shade700,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Your action here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero, // Sharp corners
+              SizedBox(height: h*0.001,),
+              SizedBox(
+                height: h*0.04,
+                child: ElevatedButton(
+                  onPressed: () {
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero, // Sharp corners
+                    ),
+                    minimumSize: Size(1000, 40),
                   ),
-                  minimumSize: Size(1000, 40),
+                  child: Text("Add"),
                 ),
-                child: Text("Add"),
               ),
             ],
           ),

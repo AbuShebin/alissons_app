@@ -34,10 +34,9 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return TextFormField(
-      maxLines: maxLines,
+      maxLines: isObscureText == true ? 1 : maxLines,
       readOnly: readOnly ?? false,
       controller: controller,
       keyboardType: keyboardType,
