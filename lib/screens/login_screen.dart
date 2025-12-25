@@ -1,9 +1,6 @@
-import 'package:alissons_app/models/login_query_params_model.dart';
-import 'package:alissons_app/models/user_model.dart';
-import 'package:alissons_app/providers/login_providers.dart';
+import 'package:alissons_app/providers/login_provider.dart';
+import 'package:alissons_app/providers/user_provider.dart';
 import 'package:alissons_app/screens/home_screen.dart';
-import 'package:alissons_app/services/login_service/controller/login_controller.dart';
-import 'package:alissons_app/services/login_service/repository/login_repository.dart';
 import 'package:alissons_app/utils/theme/pallette.dart';
 import 'package:alissons_app/widgets/custom_elevated_button.dart';
 import 'package:alissons_app/widgets/customTextField_common.dart';
@@ -26,18 +23,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   login({required WidgetRef ref}) async {
     try {
-      final user = await ref.read(loginServiceProvider).login(
+      final user = await ref
+          .read(loginServiceProvider)
+          .login(
             emailphone: emailController.text,
             password: passwordController.text,
           );
-
+      ref.read(userProvider.notifier).update((state) => user);
       if (mounted) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (context) => HomeScreen()));
       }
     } catch (e) {
-      // Handle login error
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login failed: ${e.toString()}')),

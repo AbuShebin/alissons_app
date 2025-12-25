@@ -1,16 +1,24 @@
+import 'package:alissons_app/providers/home_provider.dart';
 import 'package:alissons_app/screens/product_list_screen.dart';
 import 'package:alissons_app/utils/theme/pallette.dart';
 import 'package:alissons_app/widgets/custom_product_section.dart';
 import 'package:alissons_app/widgets/custom_product_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Palette.surfaceColor,
       appBar: AppBar(
@@ -42,15 +50,13 @@ class HomeScreen extends StatelessWidget {
                   spacing: h * 0.02,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Text(
-                        "Categories",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          fontFamily: "Lufga",
-                          color: Palette.primaryColor,
-                        ),
+                    Text(
+                      "Categories",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Lufga",
+                        color: Palette.primaryColor,
                       ),
                     ),
                     Expanded(
