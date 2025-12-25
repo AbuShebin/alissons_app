@@ -15,10 +15,11 @@ class AppTheme {
       onSurface: Palette.blackColor,
     ),
     scaffoldBackgroundColor: Palette.scaffoldBackgroundColor,
+    iconTheme: IconThemeData(color: Palette.primaryColor),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
   elevation: 6,
   highlightElevation: 12,
 ),
-
+fontFamily: "Lufga"
   );
 }

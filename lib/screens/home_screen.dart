@@ -12,8 +12,21 @@ class HomeScreen extends StatelessWidget {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Palette.scaffoldBackgroundColor,
-      appBar: AppBar(),
+      backgroundColor: Palette.surfaceColor,
+      appBar: AppBar(
+        leading: Image.asset(
+          "assets/images/cart_icon.png",
+          height: h * 0.05,
+          width: w * 0.05,
+        ),
+        backgroundColor: Palette.primaryColor,
+        actions: [
+          Icon(Icons.search, color: Palette.scaffoldBackgroundColor),
+          Icon(Icons.favorite_outline, color: Colors.white),
+          Icon(Icons.notifications_active_outlined, color: Colors.white),
+        ],
+        actionsPadding: EdgeInsets.only(right: 5),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 8.0),
@@ -23,24 +36,24 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(),
+                color: Palette.surfaceColor,
                 height: h * 0.2,
                 child: Column(
                   spacing: h * 0.02,
-
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Categories",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: "Lufga",
+                    Expanded(
+                      child: Text(
+                        "Categories",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Lufga",
+                          color: Palette.primaryColor,
+                        ),
                       ),
                     ),
                     Expanded(
-                      // Takes remaining space
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -59,7 +72,9 @@ class HomeScreen extends StatelessWidget {
                                   CircleAvatar(
                                     radius: 28,
                                     backgroundColor: Colors.grey.shade300,
-                                    child: Text('${index + 1}'), // Add content
+                                    child: Image.asset(
+                                      "assets/images/category_avatar.png",
+                                    ),
                                   ),
                                   SizedBox(height: h * 0.01),
                                   Text(
@@ -84,19 +99,31 @@ class HomeScreen extends StatelessWidget {
 
               CustomProductSection(
                 title: "Featured Products",
-                child: CustomProductTile(),
+                child: CustomProductTile(
+                  showCategoryName: false,
+                  showDiscontTIle: false,
+                ),
               ),
               CustomProductSection(
                 title: "Daily Best Selling",
-                child: CustomProductTile(),
+                child: CustomProductTile(
+                  showCategoryName: false,
+                  showDiscontTIle: false,
+                ),
               ),
               CustomProductSection(
                 title: "Recently Added",
-                child: CustomProductTile(),
+                child: CustomProductTile(
+                  showCategoryName: false,
+                  showDiscontTIle: false,
+                ),
               ),
               CustomProductSection(
                 title: "Popular Products",
-                child: CustomProductTile(),
+                child: CustomProductTile(
+                  showCategoryName: false,
+                  showDiscontTIle: false,
+                ),
               ),
             ],
           ),

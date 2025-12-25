@@ -5,7 +5,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Function()? onPressed;
   final String text;
 
-  const CustomElevatedButton({
+   CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -32,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
               fontSize: w * 0.048,
               fontWeight: FontWeight.w600,
               color: Colors.white,
-              fontFamily: 'Urbanist',
+              fontFamily: 'Lufga',
             ),
           ),
         ),

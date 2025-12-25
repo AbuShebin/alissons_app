@@ -15,7 +15,7 @@ class CustomProductSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Feature Products",
+          title,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -27,7 +27,7 @@ class CustomProductSection extends StatelessWidget {
           height: h * 0.32,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => CustomProductTile(),
+            itemBuilder: (context, index) => CustomProductTile(showCategoryName: true,showDiscontTIle: true,),
             itemCount: 10,
           ),
         ),
